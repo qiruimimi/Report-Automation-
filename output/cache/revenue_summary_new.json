@@ -1,0 +1,49 @@
+{
+  "section": "revenue",
+  "description": "收入数据 (周度收入总结)",
+  "query": {
+    "file": "sql/05_revenue.sql",
+    "row_count": 12,
+    "date_range": "20251103 ~ 20260119 (12周)",
+    "latest_week": {
+      "week": "20260119",
+      "total_amount": 64784.8,
+      "new_subscribe_amount": 10016,
+      "renewal_amount": 54732.8,
+      "total_paid_users": 1828,
+      "new_subscribe_users": 448,
+      "renewal_users": 1388,
+      "avg_transaction_overall": 35.4,
+      "avg_transaction_new": 22.4,
+      "avg_transaction_renewal": 39.4
+    }
+  },
+  "historical_trend": {
+    "12_weeks_avg_total_amount": 69293.2,
+    "12_weeks_avg_new_subscribe_ratio": 0.177,
+    "12_weeks_avg_paid_users": 1949,
+    "week_over_week_change": {
+      "previous_week": "20260112",
+      "current_week": "20260119",
+      "total_amount_change": -4183.7,
+      "total_amount_change_rate": -0.0606,
+      "new_subscribe_amount_change": -1334.8,
+      "renewal_amount_change": -2884.9,
+      "paid_users_change": -29,
+      "avg_transaction_change": -1.7
+    }
+  },
+  "key_insights": [
+    "最新周(20260119)总收入$64,784.8，其中新订阅$10,016(15.5%)，续约$54,732.8(84.5%)",
+    "付费用户1,828人，整体客单价$35.4，新签客单价$22.4，续约客单价$39.4",
+    "环比上周：总收入下降6.1%，新订阅下降11.7%，续约下降5.0%",
+    "12周历史平均：周均收入$69,293，付费用户1,949人，新订阅占比17.7%",
+    "收入结构稳定：续约收入占比始终保持在80%以上，显示用户续费意愿较强"
+  ],
+  "execution_time": "2.8 seconds",
+  "data_quality": {
+    "completeness": "100%",
+    "coverage": "12周完整数据",
+    "revenue_types": 3
+  }
+}

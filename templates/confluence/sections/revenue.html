@@ -1,0 +1,40 @@
+<h2>5.收入</h2>
+
+<p>当周收入 <span class="metric-value">{{ total_revenue }} 美元</span>，
+较上周{{ previous_revenue }} 美元<span class="trend-{{ revenue_trend_class }}">{{ revenue_change_str }}</span>，
+增长率 <span class="trend-{{ revenue_growth_trend_class }}">{{ revenue_growth_rate }}%</span>。</p>
+
+<p>其中，续约收入{{ renewal_revenue }} 美元（增长率 {{ renewal_growth_rate }}%），
+新签收入{{ new_signing_revenue }} 美元（增长率 {{ new_signing_growth_rate }}%）。</p>
+
+{% if md_content %}
+<h3>1、AI 总结</h3>
+{{ ai_summary }}
+
+<h3>2、正常收入({{ total_revenue }} 美元) 分析</h3>
+<ul>
+    <li><strong>收入类型：</strong>{{ revenue_type }}</li>
+    <li><strong>用户数：</strong>{{ user_count }}</li>
+    <li><strong>客单价：</strong>{{ average_order_value }}</li>
+</ul>
+{% endif %}
+
+{% if historical_trends %}
+<h3>历史趋势</h3>
+<ul>
+    <li>{{ historical_weeks }}周平均收入: <span class="metric-value">{{ historical_avg_revenue }} 美元</span></li>
+    <li>收入结构分析: {{ revenue_structure_analysis }}</li>
+    {% for trend in historical_trends %}
+    <li>{{ trend }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if attention_items %}
+<h3>注意项</h3>
+<ul>
+    {% for item in attention_items %}
+    <li class="attention-item">{{ item }}</li>
+    {% endfor %}
+</ul>
+{% endif %}

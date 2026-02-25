@@ -1,0 +1,24 @@
+<h2>1.流量</h2>
+
+<h3>整体表现</h3>
+<ul>
+    <li>总新访客: <span class="metric-value">{{ total_visitors }}人</span></li>
+    <li>总注册数: <span class="metric-value">{{ total_registrations }}人</span></li>
+    <li>整体转化率: <span class="metric-value">{{ conversion_rate }}%</span></li>
+</ul>
+
+<h3>环比上周变化</h3>
+<ul>
+    <li>新访客: <span class="trend-{{ visitors_trend_class }}">{{ visitors_change_str }}</span></li>
+    <li>注册数: <span class="trend-{{ registrations_trend_class }}">{{ registrations_change_str }}</span></li>
+    <li>注册转化率: <span class="trend-{{ conversion_trend_class }}">{{ conversion_change_str }}</span></li>
+</ul>
+
+{% if attention_items %}
+<h3>注意项</h3>
+<ul>
+    {% for item in attention_items %}
+    <li class="attention-item">{{ item }}</li>
+    {% endfor %}
+</ul>
+{% endif %}

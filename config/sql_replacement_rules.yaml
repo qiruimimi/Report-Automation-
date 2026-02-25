@@ -1,0 +1,76 @@
+# SQL参数替换规则配置
+
+sql_files:
+  # 流量SQL
+  traffic:
+    file: "sql/01_traffic.sql"
+    description: "流量/投放数据"
+    replacements:
+      - pattern: "'20260113' and '20260126'"
+        template: "'{partition_start}' and '{partition_end}'"
+        description: "数据分区日期范围"
+
+  # 激活SQL
+  activation:
+    file: "sql/02_activation.sql"
+    description: "激活/注册漏斗"
+    replacements:
+      - pattern: "BETWEEN '20251201' AND DATE_FORMAT(DATE_ADD('20260125', INTERVAL 6 DAY), '%Y%m%d')"
+        template: "BETWEEN '{history_start_date}' AND DATE_FORMAT(DATE_ADD('{week_saturday}', INTERVAL 6 DAY), '%Y%m%d')"
+        description: "滚动窗口数据范围（含6天缓冲）"
+
+      - pattern: "ds = '20260126'"
+        template: "ds = '{snapshot_date}'"
+        description: "快照日期（需要替换所有出现的地方）"
+
+      - pattern: "where ds = '20260126'"
+        template: "where ds = '{snapshot_date}'"
+        description: "WHERE子句中的快照日期"
+
+      - pattern: "between '20251201' and '20260125'"
+        template: "between '{history_start_date}' and '{week_saturday}'"
+        description: "注册日期范围"
+
+  # 活跃-全用户SQL
+  engagement_all_users:
+    file: "sql/03_engagement_all_users.sql"
+    description: "活跃数据-全用户"
+    replacements:
+      - pattern: "str_to_date('20260126', '%Y%m%d')"
+        template: "str_to_date('{week_sunday}', '%Y%m%d')"
+        description: "本周结束日期（周日）"
+
+  # 活跃-新老用户SQL
+  engagement_new_old_users:
+    file: "sql/03_engagement_new_old_users.sql"
+    description: "活跃数据-新老用户"
+    replacements:
+      - pattern: "str_to_date('20260126', '%Y%m%d')"
+        template: "str_to_date('{week_sunday}', '%Y%m%d')"
+        description: "本周结束日期（周日）"
+
+  # 留存SQL
+  retention:
+    file: "sql/04_retention.sql"
+    description: "留存数据"
+    replacements:
+      - pattern: "str_to_date('20260125', '%Y%m%d')"
+        template: "str_to_date('{week_saturday}', '%Y%m%d')"
+        description: "本周结束日期（周六）"
+
+  # 收入SQL
+  revenue:
+    file: "sql/05_revenue.sql"
+    description: "收入数据"
+    replacements:
+      - pattern: "WHERE ds = '20260126'"
+        template: "WHERE ds = '{snapshot_date}'"
+        description: "快照日期"
+
+      - pattern: "where ds = '20260126'"
+        template: "where ds = '{snapshot_date}'"
+        description: "WHERE子句中的快照日期（小写）"
+
+      - pattern: "BETWEEN '20251103' AND '20260125'"
+        template: "BETWEEN '{pay_start_date}' AND '{pay_end_date}'"
+        description: "支付成功日期范围"

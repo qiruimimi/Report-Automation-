@@ -1,0 +1,39 @@
+<h2>4.留存</h2>
+
+<h3>新用户留存率：</h3>
+<p><span class="metric-value">{{ new_user_retention_rate }}%</span></p>
+
+<ul>
+    <li>新用户留存率从<span class="metric-value">{{ new_user_retention_previous }}%</span>提升至<span class="metric-value">{{ new_user_retention_current }}%</span>，
+       从<span class="metric-value">{{ new_user_retention_min }}%</span>下降至<span class="metric-value">{{ new_user_retention_max }}%</span>，
+       处于近12周<span class="{{ new_user_retention_level_class }}">{{ new_user_retention_level }}</span>水平</li>
+</ul>
+
+<h3>老用户留存率：</h3>
+<p><span class="metric-value">{{ old_user_retention_rate }}%</span></p>
+
+<ul>
+    <li>老用户留存率从<span class="metric-value">{{ old_user_retention_previous }}%</span>提升至<span class="metric-value">{{ old_user_retention_current }}%</span>，
+       从<span class="metric-value">{{ old_user_retention_min }}%</span>下降至<span class="metric-value">{{ old_user_retention_max }}%</span>，
+       <span class="trend-{{ old_user_trend_class }}">{{ old_user_trend_note }}</span></li>
+</ul>
+
+{% if historical_trends %}
+<h3>历史趋势（近12周）</h3>
+<ul>
+    <li>新用户次周留存平均值: <span class="metric-value">{{ historical_new_user_avg }}%</span></li>
+    <li>老用户次周留存平均值: <span class="metric-value">{{ historical_old_user_avg }}%</span></li>
+    {% for trend in historical_trends %}
+    <li>{{ trend }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if insights %}
+<h3>留存率分化洞察</h3>
+<ul>
+    {% for insight in insights %}
+    <li>{{ insight }}</li>
+    {% endfor %}
+</ul>
+{% endif %}

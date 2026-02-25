@@ -1,0 +1,120 @@
+# Coohom周报自动化更新系统 - 主配置文件
+
+# Metabase配置
+metabase:
+  database_id: 2  # Metabase中的数据库ID
+  base_url: "https://kmb.qunhequnhe.com/"  # Metabase基础URL
+  username: "bigdata"  # Metabase用户名
+  api_token: "mb_h5ddq58TgNTAZsV7e81myvAxMlMcqXWrx1y9TdqArl8="  # Metabase API Token
+  query_timeout: 300  # 查询超时时间（秒）
+
+# Confluence配置
+confluence:
+  page_id: 81397518314
+  page_url: "https://cf.qunhequnhe.com/pages/viewpage.action?pageId=81397518314"
+  api_url: "https://cf.qunhequnhe.com"  # Confluence API基础URL
+  username: ""  # Confluence用户名（可选）
+  api_token: ""  # Confluence API Token（可选）
+
+# SQL文件配置
+sql_files:
+  traffic:
+    name: "流量/投放"
+    file: "01_traffic_weekly.sql"
+    section_key: "traffic_acquisition"
+
+  activation:
+    name: "激活/注册"
+    file: "02_activation_ready.sql"
+    section_key: "activation_funnel"
+
+  engagement:
+    name: "活跃-新老用户"
+    file: "03_engagement_new_old_users.sql"
+    section_key: "engagement"
+
+  retention:
+    name: "留存"
+    file: "04_retention.sql"
+    section_key: "retention"
+
+  revenue:
+    name: "收入"
+    file: "05_revenue.sql"
+    section_key: "revenue"
+
+# 调度配置
+schedule:
+  enabled: true
+  time: "Wed 10:00"
+  timezone: "Asia/Shanghai"
+
+# 日期配置
+date:
+  # 自动模式：根据当前日期计算本周
+  mode: "auto"
+  # 手动模式示例（用于测试或补录）：
+  # mode: "manual"
+  # target_date: "20260126"  # YYYYMMDD格式
+
+# 日志配置
+logging:
+  level: "INFO"
+  file: "logs/weekly_report.log"
+  max_bytes: 10485760  # 10MB
+  backup_count: 5
+
+# 收入MD文档配置
+revenue_md:
+  # 是否在定时任务中跳过MD询问（默认false，仅定时任务时使用）
+  skip_md_prompt_in_scheduled: false
+  # 默认MD文档搜索路径
+  default_search_path: "/Users/sunsirui/Documents/coohom PLG/26年1月/aarrr总结"
+
+# 列名映射配置：将 SQL 返回的中文列名映射到英文键名
+column_mappings:
+  traffic:
+    columns:
+      "日期": "date"
+      "渠道": "channel"
+      "新访客数": "new_visitors"
+      "新访客注册数": "new_visitor_registrations"
+      "新访客注册转化率": "new_visitor_conversion_rate"
+
+  activation:
+    columns:
+      "日期": "date"
+      "新注册用户数": "new_registered_users"
+      "注册到进工具转化率": "registration_to_tool_rate"
+      "进工具用户数": "entered_tool_users"
+      "进工具到有效画户型转化率": "tool_to_valid_design_rate"
+      "有效画户型用户数": "valid_design_users"
+      "有效画户型到有效拖模型转化率": "valid_design_to_model_rate"
+      "有效拖模型用户数": "valid_model_users"
+      "有效拖模型到渲染转化率": "model_to_render_rate"
+      "渲染用户数": "render_users"
+      "进工具总转化率": "total_to_tool_rate"
+      "有效画户型总转化率": "total_to_valid_design_rate"
+      "有效拖模型总转化率": "total_to_valid_model_rate"
+      "渲染总转化率": "total_to_render_rate"
+
+  engagement:
+    columns:
+      "周": "week"
+      "新用户WAU": "new_user_wau"
+      "老用户WAU": "old_user_wau"
+
+  retention:
+    columns:
+      "上周": "last_week"
+      "上周用户类型": "last_week_user_type"
+      "上周工具WAU": "last_week_wau"
+      "本周工具WAU": "current_week_wau"
+      "工具次周留存": "retention_rate"
+
+  revenue:
+    columns:
+      "日期": "date"
+      "Total_Amt": "total_amount"
+      "NewSubscribe_Amt": "new_subscribe_amount"
+      "Renewal_Amt": "renewal_amount"

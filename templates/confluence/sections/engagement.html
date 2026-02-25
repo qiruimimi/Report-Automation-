@@ -1,0 +1,26 @@
+<h2>3.活跃</h2>
+
+<ul>
+    <li>当周WAU达到 <span class="metric-value">{{ wau }}人</span>，环比上周<span class="trend-{{ wau_trend_class }}">{{ wau_change_str }}</span>，主要是{{ wau_contribution }}</li>
+    <li>新用户WAU: {{ new_user_wau }}人（环比<span class="trend-{{ new_user_wau_trend_class }}">{{ new_user_wau_change_str }}</span>）</li>
+    <li>老用户WAU: {{ old_user_wau }}人（环比<span class="trend-{{ old_user_wau_trend_class }}">{{ old_user_wau_change_str }}</span>）</li>
+</ul>
+
+{% if historical_trends %}
+<h3>历史趋势</h3>
+<ul>
+    <li>{{ historical_weeks }}周历史平均WAU: <span class="metric-value">{{ historical_avg_wau }}人</span></li>
+    {% for trend in historical_trends %}
+    <li>{{ trend }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if attention_items %}
+<h3>注意项</h3>
+<ul>
+    {% for item in attention_items %}
+    <li class="attention-item">{{ item }}</li>
+    {% endfor %}
+</ul>
+{% endif %}

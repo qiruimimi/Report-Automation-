@@ -1,0 +1,111 @@
+{
+  "section": "traffic",
+  "description": "流量/投放数据 (按渠道细分)",
+  "query": {
+    "file": "sql/01_traffic_modified.sql",
+    "row_count": 99,
+    "date_range": "20260118 ~ 20260126 (9天)",
+    "total_days": 9,
+    "channels_count": 11
+  },
+  "latest_day": {
+    "date": "20260126",
+    "total_visitors": 26530,
+    "total_registrations": 5705,
+    "overall_conversion_rate": 0.215,
+    "by_channel": [
+      {
+        "channel": "paid ads",
+        "visitors": 11728,
+        "registrations": 4567,
+        "conversion_rate": 0.389,
+        "rank": 1
+      },
+      {
+        "channel": "organic search",
+        "visitors": 8750,
+        "registrations": 879,
+        "conversion_rate": 0.1,
+        "rank": 2
+      },
+      {
+        "channel": "referral",
+        "visitors": 2196,
+        "registrations": 9,
+        "conversion_rate": 0.004,
+        "rank": 3
+      },
+      {
+        "channel": "other",
+        "visitors": 1116,
+        "registrations": 84,
+        "conversion_rate": 0.075,
+        "rank": 4
+      },
+      {
+        "channel": "ai search",
+        "visitors": 878,
+        "registrations": 106,
+        "conversion_rate": 0.121,
+        "rank": 5
+      },
+      {
+        "channel": "affiliate & kol",
+        "visitors": 605,
+        "registrations": 15,
+        "conversion_rate": 0.025,
+        "rank": 6
+      },
+      {
+        "channel": "mobile app search",
+        "visitors": 313,
+        "registrations": 27,
+        "conversion_rate": 0.086,
+        "rank": 7
+      },
+      {
+        "channel": "social media",
+        "visitors": 187,
+        "registrations": 15,
+        "conversion_rate": 0.08,
+        "rank": 8
+      },
+      {
+        "channel": "operations",
+        "visitors": 66,
+        "registrations": 8,
+        "conversion_rate": 0.121,
+        "rank": 9
+      },
+      {
+        "channel": "email",
+        "visitors": 65,
+        "registrations": 5,
+        "conversion_rate": 0.077,
+        "rank": 10
+      },
+      {
+        "channel": "desktop app",
+        "visitors": 22,
+        "registrations": 0,
+        "conversion_rate": 0,
+        "rank": 11
+      }
+    ]
+  },
+  "period_summary": {
+    "total_visitors_9days": 150326,
+    "total_registrations_9days": 31793,
+    "avg_daily_visitors": 16703,
+    "avg_daily_registrations": 3532,
+    "avg_conversion_rate": 0.211
+  },
+  "key_insights": [
+    "付费广告(paid ads)是最大流量来源，占比44.2%，转化率38.9%最高",
+    "自然搜索(organic search)是第二大流量来源，占比33.0%，转化率10.0%",
+    "AI搜索(ai search)和运营(operations)的转化率较高，均达到12.1%",
+    "推荐(referral)渠道流量排第三(2,196人)，但转化率仅0.4%",
+    "整体9天平均转化率21.1%，最新日(20260126)为21.5%"
+  ],
+  "execution_time": "0.2 seconds"
+}

@@ -1,0 +1,23 @@
+{
+  "section": "revenue",
+  "description": "收入数据 (周度收入总结)",
+  "query": {
+    "file": "sql/05_revenue.sql",
+    "row_count": 12,
+    "date_range": "20251103 ~ 20260119",
+    "latest_week": {
+      "week": "20260119",
+      "total_amount": 64784.8,
+      "new_subscribe_amount": 10016,
+      "renewal_amount": 54732.8,
+      "total_paid_users": 1828,
+      "new_subscribe_users": 448,
+      "renewal_users": 1388,
+      "avg_transaction_overall": 35.4,
+      "avg_transaction_new": 22.4,
+      "avg_transaction_renewal": 39.4
+    }
+  },
+  "execution_time": "2.9 seconds",
+  "summary": "最新周(20260119)总收入$64,784.8,其中新订阅$10,016(15.5%),续约$54,732.8(84.5%)。付费用户1,828人,整体客单价$35.4"
+}

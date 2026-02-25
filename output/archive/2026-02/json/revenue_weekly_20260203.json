@@ -1,0 +1,25 @@
+{
+  "section": "revenue",
+  "description": "收入数据 (12周)",
+  "query": {
+    "file": "sql/05_revenue.sql",
+    "row_count": 12,
+    "date_range": "20251110 ~ 20260201 (12周)",
+    "latest_week": "20260126",
+    "data_complete": true
+  },
+  "data": [
+    {"日期":"20251110","Total_Amt":78081.5,"NewSubscribe_Amt":15340.8,"Renewal_Amt":62664,"Total_Paid_Users":2244,"NewSubscribe_Users":733,"Renewal_Users":1528,"整体客单价":34.8,"新签首购客单价":20.9,"续约复购客单价":41},
+    {"日期":"20251117","Total_Amt":69463,"NewSubscribe_Amt":14193.9,"Renewal_Amt":55207.8,"Total_Paid_Users":2041,"NewSubscribe_Users":666,"Renewal_Users":1397,"整体客单价":34,"新签首购客单价":21.3,"续约复购客单价":39.5},
+    {"日期":"20251124","Total_Amt":74121.2,"NewSubscribe_Amt":16255.1,"Renewal_Amt":57844.9,"Total_Paid_Users":2037,"NewSubscribe_Users":660,"Renewal_Users":1386,"整体客单价":36.4,"新签首购客单价":24.6,"续约复购客单价":41.7},
+    {"日期":"20251201","Total_Amt":77840.6,"NewSubscribe_Amt":12460.6,"Renewal_Amt":65371.1,"Total_Paid_Users":2056,"NewSubscribe_Users":576,"Renewal_Users":1497,"整体客单价":37.9,"新签首购客单价":21.6,"续约复购客单价":43.7},
+    {"日期":"20251208","Total_Amt":66684.1,"NewSubscribe_Amt":13070.4,"Renewal_Amt":53613.7,"Total_Paid_Users":2063,"NewSubscribe_Users":581,"Renewal_Users":1496,"整体客单价":32.3,"新签首购客单价":22.5,"续约复购客单价":35.8},
+    {"日期":"20251215","Total_Amt":62676.6,"NewSubscribe_Amt":9524.9,"Renewal_Amt":53151.7,"Total_Paid_Users":1871,"NewSubscribe_Users":448,"Renewal_Users":1431,"整体客单价":33.5,"新签首购客单价":21.3,"续约复购客单价":37.1},
+    {"日期":"20251222","Total_Amt":53253.1,"NewSubscribe_Amt":9077.3,"Renewal_Amt":44175.9,"Total_Paid_Users":1601,"NewSubscribe_Users":374,"Renewal_Users":1234,"整体客单价":33.3,"新签首购客单价":24.3,"续约复购客单价":35.8},
+    {"日期":"20251229","Total_Amt":66170.3,"NewSubscribe_Amt":10385,"Renewal_Amt":55785.2,"Total_Paid_Users":1695,"NewSubscribe_Users":387,"Renewal_Users":1313,"整体客单价":39,"新签首购客单价":26.8,"续约复购客单价":42.5},
+    {"日期":"20260105","Total_Amt":71381.1,"NewSubscribe_Amt":11338.3,"Renewal_Amt":60042.8,"Total_Paid_Users":1970,"NewSubscribe_Users":455,"Renewal_Users":1525,"整体客单价":36.2,"新签首购客单价":24.9,"续约复购客单价":39.4},
+    {"日期":"20260112","Total_Amt":68968.5,"NewSubscribe_Amt":11350.8,"Renewal_Amt":57617.7,"Total_Paid_Users":1857,"NewSubscribe_Users":436,"Renewal_Users":1429,"整体客单价":37.1,"新签首购客单价":26,"续约复购客单价":40.3},
+    {"日期":"20260119","Total_Amt":64784.8,"NewSubscribe_Amt":10016,"Renewal_Amt":54732.8,"Total_Paid_Users":1828,"NewSubscribe_Users":448,"Renewal_Users":1388,"整体客单价":35.4,"新签首购客单价":22.4,"续约复购客单价":39.4},
+    {"日期":"20260126","Total_Amt":59888.7,"NewSubscribe_Amt":11802,"Renewal_Amt":48077.7,"Total_Paid_Users":1744,"NewSubscribe_Users":500,"Renewal_Users":1256,"整体客单价":34.3,"新签首购客单价":23.6,"续约复购客单价":38.3}
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "section": "retention",
+  "description": "留存数据 - 工具次周留存率 (周度汇总)",
+  "query": {
+    "file": "sql/04_retention.sql",
+    "row_count": 48,
+    "date_range": "20250804 ~ 20260112 (24周)",
+    "total_weeks": 24,
+    "user_types": 2
+  },
+  "latest_week": {
+    "week": "20260112",
+    "old_users": {
+      "last_week_wau": 31493,
+      "this_week_wau": 14298,
+      "retention_rate": 0.454
+    },
+    "new_users": {
+      "last_week_wau": 26240,
+      "this_week_wau": 2786,
+      "retention_rate": 0.1062
+    }
+  },
+  "historical_trend": {
+    "24_weeks_avg_old_users_retention": 0.4345,
+    "24_weeks_avg_new_users_retention": 0.1117,
+    "old_users_retention_range": {
+      "min": 0.4165,
+      "max": 0.454,
+      "std_dev": 0.0093
+    },
+    "new_users_retention_range": {
+      "min": 0.1001,
+      "max": 0.1232,
+      "std_dev": 0.0066
+    }
+  },
+  "key_insights": [
+    "最新周(20260112)工具次周留存率：老用户45.4%，新注册用户10.6%",
+    "老用户留存率稳定在43-45%区间，最新周(45.4%)处于较高水平",
+    "新注册用户留存率在10-12%区间波动，最新周(10.6%)接近历史平均水平",
+    "24周历史平均：老用户留存率43.5%，新用户留存率11.2%",
+    "留存率分化明显：老用户留存率是新用户的4.3倍，显示用户粘性差异"
+  ],
+  "execution_time": "0.6 seconds",
+  "data_quality": {
+    "completeness": "100%",
+    "coverage": "24周完整数据",
+    "user_categories": 2
+  }
+}

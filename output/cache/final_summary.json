@@ -1,0 +1,131 @@
+{
+  "report_title": "Coohom平台整体数据 - 周报自动化",
+  "report_date": "2026-01-27",
+  "data_week": "20260119 (截止2026-01-25)",
+  "database": "Metabase (database_id: 2)",
+  "sections": [
+    {
+      "order": 1,
+      "name": "traffic",
+      "description": "流量/投放",
+      "status": "✅ 完成",
+      "data_summary": {
+        "total_visitors": 24668,
+        "total_registrations": 5645,
+        "conversion_rate": 0.229,
+        "date_range": "2026-01-18 ~ 2026-01-26",
+        "row_count": 99
+      },
+      "key_insights": "本周新访客24,668人，注册转化率22.9%，数据覆盖周期2026-01-18至2026-01-26"
+    },
+    {
+      "order": 2,
+      "name": "activation",
+      "description": "激活/注册",
+      "status": "✅ 完成",
+      "data_summary": {
+        "latest_week": "20260119",
+        "new_registrations": 21493,
+        "entered_tool": 17556,
+        "to_tool_rate": 0.8168,
+        "valid_house_models": 12315,
+        "to_house_rate": 0.573,
+        "valid_drag_models": 3830,
+        "to_drag_rate": 0.311,
+        "rendered": 1159,
+        "to_render_rate": 0.3026
+      },
+      "key_insights": "本周新注册21,493人，进工具转化率81.68%，有效画户型转化率57.3%，最终渲染转化率30.26%"
+    },
+    {
+      "order": 3,
+      "name": "engagement",
+      "description": "活跃",
+      "status": "✅ 完成",
+      "data_summary": {
+        "all_users": {
+          "latest_week_wau": 49836,
+          "date_range": "20250804 ~ 20260119",
+          "row_count": 25
+        },
+        "new_old_users": {
+          "latest_week": {
+            "week": "20260119",
+            "old_users": 30543,
+            "new_users": 19293,
+            "total": 49836
+          },
+          "date_range": "20250804 ~ 20260119",
+          "row_count": 50
+        }
+      },
+      "key_insights": "个人用户工具WAU为49,836人，其中老用户30,543人(61.3%)，新注册用户19,293人(38.7%)"
+    },
+    {
+      "order": 4,
+      "name": "retention",
+      "description": "留存",
+      "status": "✅ 完成",
+      "data_summary": {
+        "latest_week": "20260112",
+        "old_users": {
+          "last_week_wau": 31493,
+          "this_week_wau": 14298,
+          "retention_rate": 0.454
+        },
+        "new_users": {
+          "last_week_wau": 26240,
+          "this_week_wau": 2786,
+          "retention_rate": 0.1062
+        },
+        "date_range": "20250804 ~ 20260112",
+        "row_count": 48
+      },
+      "key_insights": "工具次周留存率 - 老用户45.4%，新注册用户10.6%。老用户留存稳定在43-45%区间"
+    },
+    {
+      "order": 5,
+      "name": "revenue",
+      "description": "收入",
+      "status": "✅ 完成",
+      "data_summary": {
+        "latest_week": "20260119",
+        "total_amount": 64784.8,
+        "new_subscribe_amount": 10016,
+        "new_subscribe_ratio": 0.155,
+        "renewal_amount": 54732.8,
+        "renewal_ratio": 0.845,
+        "total_paid_users": 1828,
+        "new_subscribe_users": 448,
+        "renewal_users": 1388,
+        "avg_transaction_overall": 35.4,
+        "avg_transaction_new": 22.4,
+        "avg_transaction_renewal": 39.4,
+        "date_range": "20251103 ~ 20260119",
+        "row_count": 12
+      },
+      "key_insights": "本周总收入$64,784.8，其中新订阅占15.5%($10,016)，续约占84.5%($54,732.8)。付费用户1,828人，整体客单价$35.4"
+    }
+  ],
+  "execution_summary": {
+    "total_sections": 5,
+    "successful": 5,
+    "failed": 0,
+    "total_queries": 6,
+    "total_execution_time": "~12 seconds",
+    "timestamp": "2026-01-27 18:52:33"
+  },
+  "output_files": [
+    "output/traffic_summary.json",
+    "output/activation_summary.json",
+    "output/engagement_summary.json",
+    "output/retention_summary.json",
+    "output/revenue_summary.json"
+  ],
+  "next_steps": [
+    "1. 数据分析：环比上周变化，识别趋势和异常",
+    "2. 报告生成：生成Confluence格式的HTML报告",
+    "3. 页面更新：更新Confluence页面 (pageId: 81397518314)",
+    "4. 自动化部署：配置定时任务（每周三自动执行）"
+  ]
+}

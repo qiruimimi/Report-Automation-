@@ -1,0 +1,28 @@
+<h3>行动建议</h3>
+
+{% if short_term_suggestions %}
+<h4>短期建议（1-2周）</h4>
+<ul>
+    {% for suggestion in short_term_suggestions %}
+    <li>{{ suggestion }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if medium_term_suggestions %}
+<h4>中期建议（1-2月）</h4>
+<ul>
+    {% for suggestion in medium_term_suggestions %}
+    <li>{{ suggestion }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if long_term_suggestions %}
+<h4>长期建议（3-6月）</h4>
+<ul>
+    {% for suggestion in long_term_suggestions %}
+    <li>{{ suggestion }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
