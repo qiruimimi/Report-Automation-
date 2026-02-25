@@ -1,0 +1,133 @@
+{
+  "section": "traffic",
+  "description": "流量/投放数据 (周度汇总 - 按渠道细分)",
+  "query": {
+    "file": "sql/01_traffic_weekly.sql",
+    "row_count": 176,
+    "date_range": "20251006 ~ 20260119 (16周)",
+    "total_weeks": 16,
+    "channels_count": 11,
+    "latest_week": "20260119",
+    "data_period": "周度聚合数据"
+  },
+  "latest_week": {
+    "week": "20260119",
+    "total_visitors": 110675,
+    "total_registrations": 21538,
+    "overall_conversion_rate": 0.195,
+    "by_channel": [
+      {
+        "channel": "paid ads",
+        "visitors": 27510,
+        "registrations": 13008,
+        "conversion_rate": 0.473,
+        "rank": 1
+      },
+      {
+        "channel": "organic search",
+        "visitors": 72987,
+        "registrations": 7200,
+        "conversion_rate": 0.099,
+        "rank": 2
+      },
+      {
+        "channel": "referral",
+        "visitors": 16613,
+        "registrations": 34,
+        "conversion_rate": 0.002,
+        "rank": 3
+      },
+      {
+        "channel": "ai search",
+        "visitors": 6155,
+        "registrations": 802,
+        "conversion_rate": 0.13,
+        "rank": 4
+      },
+      {
+        "channel": "other",
+        "visitors": 6077,
+        "registrations": 402,
+        "conversion_rate": 0.066,
+        "rank": 5
+      },
+      {
+        "channel": "affiliate & kol",
+        "visitors": 3321,
+        "registrations": 134,
+        "conversion_rate": 0.04,
+        "rank": 6
+      },
+      {
+        "channel": "mobile app search",
+        "visitors": 2469,
+        "registrations": 147,
+        "conversion_rate": 0.06,
+        "rank": 7
+      },
+      {
+        "channel": "social media",
+        "visitors": 1216,
+        "registrations": 111,
+        "conversion_rate": 0.091,
+        "rank": 8
+      },
+      {
+        "channel": "email",
+        "visitors": 955,
+        "registrations": 11,
+        "conversion_rate": 0.012,
+        "rank": 9
+      },
+      {
+        "channel": "operations",
+        "visitors": 715,
+        "registrations": 67,
+        "conversion_rate": 0.094,
+        "rank": 10
+      },
+      {
+        "channel": "desktop app",
+        "visitors": 78,
+        "registrations": 0,
+        "conversion_rate": 0,
+        "rank": 11
+      }
+    ]
+  },
+  "historical_trend": {
+    "16_weeks_total_visitors": 2800534,
+    "16_weeks_total_registrations": 566397,
+    "avg_weekly_visitors": 175033,
+    "avg_weekly_registrations": 35399,
+    "avg_conversion_rate": 0.201,
+    "first_week": {
+      "week": "20251006",
+      "visitors": 201362,
+      "registrations": 39084,
+      "conversion_rate": 0.194
+    },
+    "week_over_week_change": {
+      "previous_week": "20260112",
+      "current_week": "20260119",
+      "visitors_change": -40212,
+      "visitors_change_rate": -0.267,
+      "registrations_change": -1196,
+      "registrations_change_rate": -0.053,
+      "conversion_rate_change": 0.028
+    }
+  },
+  "key_insights": [
+    "最新周(20260119)总新访客110,675人，注册21,538人，转化率19.5%",
+    "付费广告(paid ads)转化率47.3%最高，但新访客数(27,510)环比上周下降37.2%",
+    "自然搜索(organic search)是最大流量来源(72,987人)，但转化率仅9.9%",
+    "16周历史数据显示：周均新访客175,033人，周均注册35,399人，平均转化率20.1%",
+    "环比上周：新访客下降26.7%，注册下降5.3%，但转化率提升2.8个百分点"
+  ],
+  "execution_time": "0.5 seconds",
+  "data_quality": {
+    "completeness": "100%",
+    "coverage": "16周完整数据",
+    "channels_analyzed": 11
+  }
+}

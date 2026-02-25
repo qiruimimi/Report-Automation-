@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep:*)",
+      "Bash(pkill:*)",
+      "Bash(timeout:*)",
+      "Bash(wc:*)",
+      "Bash(\"/Users/sunsirui/Documents/coohom PLG/kmb/Our analytics/weekly_report_automation/RESULTS_SUMMARY.md\" )",
+      "Bash(\"/Users/sunsirui/Documents/coohom PLG/kmb/Our analytics/weekly_report_automation/OPTIMIZATION_SUMMARY.md\" )",
+      "Bash(\"/Users/sunsirui/Documents/coohom PLG/kmb/Our analytics/weekly_report_automation/OPTIMIZATION_SUMMARY_2026.md\" )",
+      "Bash(\"/Users/sunsirui/Documents/coohom PLG/kmb/Our analytics/weekly_report_automation/IMPROVEMENT_RECOMMENDATIONS.md\")",
+      "Bash(git remote add:*)",
+      "Bash(git fetch:*)",
+      "Bash(git push:*)",
+      "Bash(git pull:*)",
+      "Bash(git checkout:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(python -m pytest:*)"
+    ]
+  }
+}

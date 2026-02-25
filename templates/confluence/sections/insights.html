@@ -1,0 +1,26 @@
+<h2>6.核心洞察与建议</h2>
+
+<h3>正向趋势</h3>
+<ul>
+    {% for insight in positive_insights %}
+    <li class="positive-trend">{{ insight }}</li>
+    {% endfor %}
+</ul>
+
+{% if negative_insights %}
+<h3>需要关注的问题</h3>
+<ul>
+    {% for insight in negative_insights %}
+    <li class="negative-trend">{{ insight }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if key_findings %}
+<h3>关键发现</h3>
+<ul>
+    {% for finding in key_findings %}
+    <li>{{ finding }}</li>
+    {% endfor %}
+</ul>
+{% endif %}

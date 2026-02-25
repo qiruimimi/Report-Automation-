@@ -1,0 +1,47 @@
+{
+  "section": "engagement_new_old",
+  "description": "活跃数据 - 新老用户分析 (周度汇总)",
+  "query": {
+    "file": "sql/03_engagement_new_old_users.sql",
+    "row_count": 50,
+    "date_range": "20250804 ~ 20260119 (25周)",
+    "total_weeks": 25,
+    "user_types": 2
+  },
+  "latest_week": {
+    "week": "20260119",
+    "old_users": 30543,
+    "new_users": 19293,
+    "total": 49836,
+    "old_user_ratio": 0.613,
+    "new_user_ratio": 0.387
+  },
+  "historical_trend": {
+    "25_weeks_avg_old_users": 31079,
+    "25_weeks_avg_new_users": 29771,
+    "25_weeks_avg_total": 60850,
+    "week_over_week_change": {
+      "previous_week": "20260112",
+      "current_week": "20260119",
+      "old_users_change": -950,
+      "old_users_change_rate": -0.0302,
+      "new_users_change": -6947,
+      "new_users_change_rate": -0.2647,
+      "total_change": -7897,
+      "total_change_rate": -0.1367
+    }
+  },
+  "key_insights": [
+    "最新周(20260119)工具WAU为49,836人，其中老用户30,543人(61.3%)，新注册用户19,293人(38.7%)",
+    "环比上周：总WAU下降13.7%，老用户下降3.0%，新注册用户下降26.5%",
+    "25周历史平均：周均总WAU 60,850人，其中老用户31,079人(51.1%)，新用户29,771人(48.9%)",
+    "最新周新老用户结构：老用户占比61.3%，高于历史平均水平(51.1%)",
+    "新注册用户WAU大幅下降，可能受节假日或季节性因素影响"
+  ],
+  "execution_time": "0.6 seconds",
+  "data_quality": {
+    "completeness": "100%",
+    "coverage": "25周完整数据",
+    "user_categories": 2
+  }
+}

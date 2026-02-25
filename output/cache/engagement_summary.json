@@ -1,0 +1,30 @@
+{
+  "section": "engagement",
+  "description": "活跃数据 (周度工具WAU)",
+  "queries": {
+    "all_users": {
+      "file": "sql/03_engagement_all_users.sql",
+      "description": "活跃-全用户",
+      "row_count": 25,
+      "date_range": "20250804 ~ 20260119",
+      "latest_week": {
+        "week": "20260119",
+        "personal_wau": 49836
+      }
+    },
+    "new_old_users": {
+      "file": "sql/03_engagement_new_old_users.sql",
+      "description": "活跃-新老用户",
+      "row_count": 50,
+      "date_range": "20250804 ~ 20260119",
+      "latest_week": {
+        "week": "20260119",
+        "old_users": 30543,
+        "new_users": 19293,
+        "total": 49836
+      }
+    }
+  },
+  "execution_time": "4.9 seconds",
+  "summary": "个人用户工具WAU最新周(20260119): 49,836人，其中老用户30,543人(61.3%)，新注册用户19,293人(38.7%)"
+}

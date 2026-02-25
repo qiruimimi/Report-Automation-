@@ -1,0 +1,156 @@
+# Coohom周报自动化系统 - 模板配置文件
+
+# 定义报告生成器使用的模板路径和渲染配置
+
+templates:
+  # Confluence HTML模板配置
+  confluence:
+    # 基础模板目录
+    base_dir: "templates/confluence"
+
+    # 基础HTML模板文件
+    base_template: "base.html"
+
+    # 各部分模板文件
+    sections:
+      traffic: "sections/traffic.html"
+      activation: "sections/activation.html"
+      engagement: "sections/engagement.html"
+      retention: "sections/retention.html"
+      revenue: "sections/revenue.html"
+      insights: "sections/insights.html"
+      suggestions: "sections/suggestions.html"
+
+  # Markdown报告模板配置
+  markdown:
+    # Markdown模板目录
+    base_dir: "templates/confluence"
+
+    # 完整报告模板文件
+    report_template: "report.md"
+
+# 渲染配置
+rendering:
+  # 是否启用模板缓存
+  cache_enabled: true
+
+  # 是否启用HTML转义
+  autoescape: false
+
+  # 编码格式
+  encoding: "utf-8"
+
+  # 缩进字符
+  indent_spaces: 2
+
+# 输出配置
+output:
+  # HTML输出文件命名格式
+  html_filename_format: "confluence_report_{date}.html"
+
+  # Markdown输出文件命名格式
+  markdown_filename_format: "weekly_report_{date}.md"
+
+  # 日期格式
+  date_format: "%Y%m%d"
+
+# 数据处理配置
+data:
+  # 数字格式化配置
+  number_format:
+    # 千位分隔符
+    thousands_separator: ","
+    # 小数点分隔符
+    decimal_point: "."
+    # 小数位数
+    decimal_places: 2
+
+  # 趋势配置
+  trend:
+    up_symbol: "↑"
+    down_symbol: "↓"
+    flat_symbol: "→"
+    up_color: "rgb(51, 153, 102)"
+    down_color: "rgb(255, 0, 0)"
+    flat_color: "rgb(0, 0, 0)"
+
+# 部分特定配置
+sections:
+  traffic:
+    # 流量部分指标
+    metrics:
+      - name: "新访客数"
+        key: "new_visitors"
+        format: "int"
+      - name: "注册数"
+        key: "registrations"
+        format: "int"
+      - name: "转化率"
+        key: "conversion_rate"
+        format: "percent"
+
+  activation:
+    # 激活部分指标
+    funnel_steps:
+      - name: "注册→进工具"
+        key: "step1"
+      - name: "进工具→画户型"
+        key: "step2"
+      - name: "画户型→拖模型"
+        key: "step3"
+      - name: "拖模型→渲染"
+        key: "step4"
+
+  engagement:
+    # 活跃部分指标
+    metrics:
+      - name: "WAU"
+        key: "wau"
+        format: "int"
+      - name: "新用户WAU"
+        key: "new_user_wau"
+        format: "int"
+      - name: "老用户WAU"
+        key: "old_user_wau"
+        format: "int"
+
+  retention:
+    # 留存部分指标
+    metrics:
+      - name: "新用户留存率"
+        key: "new_user_retention_rate"
+        format: "percent"
+      - name: "老用户留存率"
+        key: "old_user_retention_rate"
+        format: "percent"
+
+  revenue:
+    # 收入部分指标
+    metrics:
+      - name: "总收入"
+        key: "total_revenue"
+        format: "currency"
+        currency: "USD"
+      - name: "续约收入"
+        key: "renewal_revenue"
+        format: "currency"
+        currency: "USD"
+      - name: "新签收入"
+        key: "new_signing_revenue"
+        format: "currency"
+        currency: "USD"
+
+# 样式配置
+styles:
+  # Confluence兼容样式
+  confluence:
+    # 是否使用Confluence命名空间
+    use_ac_namespace: true
+
+    # 颜色配置
+    colors:
+      primary: "rgb(0, 0, 255)"
+      success: "rgb(51, 153, 102)"
+      warning: "rgb(255, 165, 0)"
+      error: "rgb(255, 0, 0)"
+      info: "rgb(0, 102, 204)"

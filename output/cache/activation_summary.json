@@ -1,0 +1,59 @@
+{
+  "section": "activation",
+  "description": "激活/注册漏斗数据 (周度汇总)",
+  "query": {
+    "file": "sql/02_activation_funnel.sql",
+    "row_count": 8,
+    "date_range": "20251201 ~ 20260119 (8周)",
+    "total_weeks": 8,
+    "data_period": "周度聚合数据，包含7天滚动窗口"
+  },
+  "latest_week": {
+    "week": "20260119",
+    "new_registrations": 21493,
+    "entered_tool": 17556,
+    "to_tool_rate": 0.8168,
+    "valid_house_models": 12315,
+    "to_house_rate": 0.7015,
+    "valid_drag_models": 3832,
+    "to_drag_rate": 0.3112,
+    "rendered": 1159,
+    "to_render_rate": 0.3025,
+    "total_funnel": {
+      "registration_to_tool": 0.8168,
+      "registration_to_house": 0.573,
+      "registration_to_drag": 0.1783,
+      "registration_to_render": 0.0539
+    }
+  },
+  "historical_trend": {
+    "8_weeks_avg_registrations": 27598,
+    "8_weeks_avg_tool_users": 22329,
+    "8_weeks_avg_house_models": 15073,
+    "8_weeks_avg_drag_models": 4557,
+    "8_weeks_avg_rendered": 1448,
+    "week_over_week_change": {
+      "previous_week": "20260112",
+      "current_week": "20260119",
+      "registrations_change": -7757,
+      "registrations_change_rate": -0.2652,
+      "to_tool_rate_change": -0.0187,
+      "to_house_rate_change": -0.0029,
+      "to_drag_rate_change": 0.0045,
+      "to_render_rate_change": -0.0053
+    }
+  },
+  "key_insights": [
+    "最新周(20260119)新注册21,493人，进工具转化率81.68%，较上周下降1.9个百分点",
+    "进工具到有效画户型转化率70.15%，有效画户型到拖模型转化率31.12%",
+    "最终渲染转化率30.25%，即从注册到渲染的总体转化率为5.39%",
+    "环比上周：新注册人数下降26.5%，但各环节转化率基本稳定",
+    "8周历史平均：周均新注册27,598人，进工具22,329人，最终渲染1,448人"
+  ],
+  "execution_time": "4.1 seconds",
+  "data_quality": {
+    "completeness": "100%",
+    "coverage": "8周数据（使用2个月滚动窗口）",
+    "funnel_stages": 5
+  }
+}

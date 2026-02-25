@@ -1,0 +1,26 @@
+# Coohom周报自动化更新系统 - Python依赖包
+
+# 基础依赖
+pyyaml>=6.0
+colorlog>=6.7.0
+jinja2>=3.1.0
+
+# 数据处理
+# pandas>=2.0.0
+
+# 网络请求
+requests>=2.31.0
+
+# 任务调度
+# schedule>=1.2.0
+
+# 环境变量管理
+python-dotenv>=1.0.0
+
+# 命令行参数
+click>=8.1.0
+
+# 测试框架
+pytest>=7.4.0
+pytest-mock>=3.11.0
+pytest-cov>=4.1.0

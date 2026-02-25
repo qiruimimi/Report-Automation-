@@ -1,0 +1,55 @@
+{
+  "title": "Coohom周报自动化 - SQL执行指南",
+  "date": "2026-01-27",
+  "database_id": 2,
+  "sections": [
+    {
+      "name": "traffic",
+      "description": "流量/投放",
+      "sql_file": "sql/01_traffic_modified.sql",
+      "sql_size": 6361,
+      "sql_preview": "select\n    `create_date` as `日期`\n  , `ads_channel_classify` as `渠道`\n  , `new_effective_guest_cnt` as `新访客数`\n  , `new_effective_register_cnt` as `新访客注册数`\n  , if(\n        `new_effective_guest_cnt` = 0\n ...",
+      "execution_command": "# 使用Claude MCP工具执行:\n# mcp__metabase__execute_sql_query(database_id=2, query=<读取 sql/01_traffic_modified.sql 的内容>)"
+    },
+    {
+      "name": "activation",
+      "description": "激活/注册",
+      "sql_file": "sql/02_activation_ready.sql",
+      "sql_size": 6427,
+      "sql_preview": " WITH user_daily_pv AS (\n    -- Step 1: 按照日期和用户统计每日 PV\n    SELECT\n        userid,\n        ds,\n        COUNT(1) AS pv\n    FROM\n        hive_prod.kdw_log.dwd_log_yuntuModelAfterDrag\n    WHERE\n        ds...",
+      "execution_command": "# 使用Claude MCP工具执行:\n# mcp__metabase__execute_sql_query(database_id=2, query=<读取 sql/02_activation_ready.sql 的内容>)"
+    },
+    {
+      "name": "engagement_all",
+      "description": "活跃-全用户",
+      "sql_file": "sql/03_engagement_all_users.sql",
+      "sql_size": 3064,
+      "sql_preview": "\n\nSELECT lastweek.created_week AS `周`, lastweek.coohom_user_type AS `账号类型` -- lastweek.active_user_type  as \"上周用户类型\",\n\t, count(DISTINCT lastweek.user_id) AS `工具WAU`\nFROM (\n\tSELECT user_id, created_wee...",
+      "execution_command": "# 使用Claude MCP工具执行:\n# mcp__metabase__execute_sql_query(database_id=2, query=<读取 sql/03_engagement_all_users.sql 的内容>)"
+    },
+    {
+      "name": "engagement_new_old",
+      "description": "活跃-新老用户",
+      "sql_file": "sql/03_engagement_new_old_users.sql",
+      "sql_size": 2714,
+      "sql_preview": "SELECT lastweek.created_week AS `周`, lastweek.active_user_type AS `用户类型（新老）`, count(DISTINCT lastweek.user_id) AS `上周工具WAU`\nFROM (\n\tSELECT user_id, created_week, user_created_week, coohom_user_type\n\t\t...",
+      "execution_command": "# 使用Claude MCP工具执行:\n# mcp__metabase__execute_sql_query(database_id=2, query=<读取 sql/03_engagement_new_old_users.sql 的内容>)"
+    },
+    {
+      "name": "retention",
+      "description": "留存",
+      "sql_file": "sql/04_retention.sql",
+      "sql_size": 2935,
+      "sql_preview": "SELECT lastweek.created_week AS `上周`, lastweek.active_user_type AS `上周用户类型`, count(DISTINCT lastweek.user_id) AS `上周工具WAU`\n\t, count(DISTINCT thisweek.user_id) AS `本周工具WAU`\n\t, if(count(DISTINCT lastwee...",
+      "execution_command": "# 使用Claude MCP工具执行:\n# mcp__metabase__execute_sql_query(database_id=2, query=<读取 sql/04_retention.sql 的内容>)"
+    },
+    {
+      "name": "revenue",
+      "description": "收入",
+      "sql_file": "sql/05_revenue.sql",
+      "sql_size": 6725,
+      "sql_preview": "with usr AS (\n  select \n      usr_1.userid\n  from (\n\t\tSELECT CASE '周'\n\t\t\t\tWHEN '周' THEN created_week\n\t\t\t\tWHEN '日' THEN created_day\n\t\t\t\tWHEN '月' THEN concat(substr(created_day, 1, 6), '01')\n\t\t\tEND AS c...",
+      "execution_command": "# 使用Claude MCP工具执行:\n# mcp__metabase__execute_sql_query(database_id=2, query=<读取 sql/05_revenue.sql 的内容>)"
+    }
+  ]
+}
