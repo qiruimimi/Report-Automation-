@@ -9,8 +9,7 @@ import pytest
 from pathlib import Path
 from unittest.mock import Mock, patch, MagicMock
 from src.report_generator import ReportGenerator
-from src.data_validator import DataValidator
-from src.data_quality import DataQualityAnalyzer
+from src.data_quality import DataValidator, DataQualityAnalyzer
 
 
 class TestEndToEnd:

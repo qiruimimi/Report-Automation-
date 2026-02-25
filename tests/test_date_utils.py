@@ -14,16 +14,15 @@ class TestDateUtils:
 
     def test_calculate_current_week(self):
         """测试计算当前周"""
-        # 导入函数
-        from src.date_utils import calculate_this_week_params
+        from src.date_utils import calculate_week_params
 
         # 调用函数
-        params = calculate_this_week_params()
+        params = calculate_week_params()
 
         # 验证返回的参数
         assert params is not None
         assert 'week_sunday' in params
-        assert 'week_monday' in params
+        assert 'week_saturday' in params
         assert 'week_offset' in params
         assert params['week_offset'] == 0
 
@@ -34,22 +33,24 @@ class TestDateUtils:
 
     def test_calculate_previous_week(self):
         """测试计算上周"""
-        from src.date_utils import calculate_this_week_params
+        from src.date_utils import calculate_week_params
 
-        params = calculate_this_week_params(week_offset=-1)
+        params = calculate_week_params(week_offset=-1)
 
         assert params['week_offset'] == -1
         assert 'week_sunday' in params
+        assert 'week_saturday' in params
         assert 'week_monday' in params
 
     def test_calculate_next_week(self):
         """测试计算下周"""
-        from src.date_utils import calculate_this_week_params
+        from src.date_utils import calculate_week_params
 
-        params = calculate_this_week_params(week_offset=1)
+        params = calculate_week_params(week_offset=1)
 
         assert params['week_offset'] == 1
         assert 'week_sunday' in params
+        assert 'week_saturday' in params
         assert 'week_monday' in params
 
     def test_date_format_validation(self):
@@ -66,43 +67,72 @@ class TestDateUtils:
         assert validate_date_format('02/10/2026') is False
         assert validate_date_format('2026/02/10') is False
 
-    def test_week_label_format(self):
-        """测试周标签格式"""
-        from src.date_utils import format_week_label
+    def test_calculate_specific_date_week(self):
+        """测试指定日期的周计算"""
+        from src.date_utils import calculate_week_params
 
-        # 测试正确的周标签
-        assert format_week_label(2026, 2, 10) == '20260210'
-        assert format_week_label(2026, 1, 1) == '20260101'
+        # 测试指定日期的周
+        params = calculate_week_params(target_date='20260210')
 
-    def test_calculate_date_range(self):
-        """测试日期范围计算"""
-        from src.date_utils import calculate_date_range
+        assert params is not None
+        assert 'report_date' in params
+        assert '2026-02' in params['report_date']
 
-        start_date = '20260201'
-        result = calculate_date_range(start_date, days=7)
+    def test_format_date_display(self):
+        """测试日期格式化显示"""
+        from src.date_utils import calculate_week_params, format_date_display
 
-        assert result is not None
-        assert 'end_date' in result
-        assert 'days' in result
+        params = calculate_week_params()
+        display = format_date_display(params)
+
+        assert isinstance(display, str)
+        assert '本周' in display
+
+        params_next = calculate_week_params(week_offset=1)
+        display_next = format_date_display(params_next)
+        assert '下周' in display_next
+
+    def test_get_week_range_from_date(self):
+        """测试从日期获取周范围"""
+        from src.date_utils import get_week_range_from_date
+
+        monday, sunday = get_week_range_from_date('20260210')
+
+        assert isinstance(monday, str)
+        assert isinstance(sunday, str)
+        assert len(monday) == 8
+        assert len(sunday) == 8
+        assert monday < sunday
 
     def test_handle_edge_dates(self):
         """测试边缘日期处理"""
-        from src.date_utils import calculate_this_week_params
+        from src.date_utils import calculate_week_params
 
         # 测试年末
-        params = calculate_this_week_params(week_offset=-1)
+        params = calculate_week_params(target_date='20261231')
+
         # 只验证返回结构，不验证具体值
         assert params is not None
+        assert 'week_sunday' in params
 
-    def test_timezone_handling(self):
-        """测试时区处理"""
-        from src.date_utils import get_current_date_str
+    def test_all_date_params_present(self):
+        """测试所有日期参数都存在"""
+        from src.date_utils import calculate_week_params
 
-        date_str = get_current_date_str()
+        params = calculate_week_params()
 
-        # 验证返回的是字符串
-        assert isinstance(date_str, str)
-        assert len(date_str) == 8  # YYYYMMDD格式
+        # 验证所有必需的参数
+        required_keys = [
+            'week_monday', 'week_saturday', 'week_sunday',
+            'last_week_monday', 'last_week_saturday', 'last_week_sunday',
+            'partition_start', 'partition_end',
+            'snapshot_date', 'history_start_date',
+            'pay_start_date', 'pay_end_date',
+            'report_date', 'week_offset'
+        ]
+
+        for key in required_keys:
+            assert key in params, f"缺少必需的日期参数: {key}"
 
 
 if __name__ == '__main__':

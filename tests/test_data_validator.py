@@ -6,7 +6,7 @@
 """
 
 import pytest
-from src.data_validator import DataValidator
+from src.data_quality import DataValidator
 
 
 class TestDataValidator:
@@ -67,14 +67,14 @@ class TestDataValidator:
         """测试有异常数据检测"""
         validator = DataValidator(logger)
 
-        # 当前值比上周高60%，超过50%阈值
+        # 当前值比上周高60%，超过50%阈值 (ratio=1.2, 应为medium)
         current_data = [{'new_visitors': 16000}]
         previous_data = [{'new_visitors': 10000}]
 
         anomalies = validator.check_anomalies('traffic', current_data, previous_data, 'new_visitors')
 
         assert len(anomalies) == 1
-        assert anomalies[0]['severity'] == 'high'
+        assert anomalies[0]['severity'] == 'medium'  # 60/50=1.2, 在1.0-1.5之间为medium
         assert '60.0%' in anomalies[0]['message']
 
     def test_check_anomalies_critical_severity(self, logger):
