@@ -1,5 +1,12 @@
 <h2>5.收入</h2>
 
+{% if ai_summary %}
+<div class="ai-summary-section" style="background: #f4f5f7; padding: 12px; border-left: 3px solid #0052cc; margin: 12px 0; border-radius: 3px;">
+    <h4 style="margin: 0 0 8px 0; color: #172b4d; font-size: 14px;">🤖 AI洞察</h4>
+    <p style="color: #475469; line-height: 1.6; margin: 0;">{{ ai_summary }}</p>
+</div>
+{% endif %}
+
 <p>当周收入 <span class="metric-value">{{ total_revenue }} 美元</span>，
 较上周{{ previous_revenue }} 美元<span class="trend-{{ revenue_trend_class }}">{{ revenue_change_str }}</span>，
 增长率 <span class="trend-{{ revenue_growth_trend_class }}">{{ revenue_growth_rate }}%</span>。</p>
@@ -8,10 +15,7 @@
 新签收入{{ new_signing_revenue }} 美元（增长率 {{ new_signing_growth_rate }}%）。</p>
 
 {% if md_content %}
-<h3>1、AI 总结</h3>
-{{ ai_summary }}
-
-<h3>2、正常收入({{ total_revenue }} 美元) 分析</h3>
+<h3>正常收入({{ total_revenue }} 美元) 分析</h3>
 <ul>
     <li><strong>收入类型：</strong>{{ revenue_type }}</li>
     <li><strong>用户数：</strong>{{ user_count }}</li>

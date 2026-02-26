@@ -3,6 +3,7 @@
 Coohom周报自动化更新系统 - 主入口（支持命令行参数）
 
 整合所有模块，实现端到端的周报更新流程
+使用新的架构：API层 + 核心业务逻辑层
 """
 
 import sys
@@ -10,16 +11,23 @@ import os
 from pathlib import Path
 from datetime import datetime
 from typing import Dict
-import yaml
 
 # 添加src目录到Python路径
 sys.path.insert(0, str(Path(__file__).parent))
+
+# 加载 .env 文件中的环境变量
+try:
+    from dotenv import load_dotenv
+    load_dotenv()  # 自动加载项目根目录的 .env 文件
+except ImportError:
+    print("⚠️  未安装 python-dotenv，运行: pip install python-dotenv")
 
 from src.logger import setup_logging, get_logger
 from src.date_utils import calculate_week_params
 from src.interactive_prompt import ask_target_week, ask_revenue_summary, confirm_execution
 from src.data_fetcher import DataFetcher
-from src.data_analyzer import DataAnalyzer
+# 使用新的 Analyzer 替代 DataAnalyzer（向后兼容）
+from src.core import ConfigManager, Analyzer, ReportGenerator as NewReportGenerator
 from src.report_generator import ReportGenerator
 from src.confluence_updater import ConfluenceUpdater
 
@@ -196,16 +204,25 @@ def main():
                 logger.info("\n用户中断执行")
                 sys.exit(1)
 
-        # 6. 加载配置
+        # 6. 加载配置（使用新的 ConfigManager）
         logger.info("加载配置文件...")
-        config = load_config()
+        config_manager = ConfigManager()
+        config = config_manager._config  # 兼容旧代码
         base_path = Path(__file__).parent
+
+        # 将 API 配置从环境变量合并到 config（确保 METABASE_API_KEY 被读取）
+        api_config = config_manager.get_api_config()
+        if api_config['metabase_api_key']:
+            config['metabase']['metabase_api_key'] = api_config['metabase_api_key']
+            logger.info("✅ 从环境变量读取 METABASE_API_KEY")
+        else:
+            logger.info("ℹ️  METABASE_API_KEY 环境变量未设置，将使用配置文件或MCP方式")
 
         # 7. 数据获取 - 获取本周数据
         logger.info("\n" + "="*60)
         logger.info("第一阶段：数据获取")
         logger.info("="*60)
-        fetcher = DataFetcher(config, use_mcp=True, logger=logger)
+        fetcher = DataFetcher(config, logger=logger, use_mcp=False)
 
         logger.info("获取本周数据...")
         current_data = fetcher.fetch_all_sections(week_config, week_offset=0, base_path=str(base_path))
@@ -222,13 +239,13 @@ def main():
         logger.info("\n获取上周数据（用于环比计算）...")
         previous_data = fetcher.fetch_all_sections(week_config, week_offset=-1, base_path=str(base_path))
 
-        # 9. 数据分析
+        # 9. 数据分析（使用新的 Analyzer）
         logger.info("\n" + "="*60)
         logger.info("第二阶段：数据分析")
         logger.info("="*60)
-        analyzer = DataAnalyzer(logger)
+        analyzer = Analyzer(config=config_manager, logger=logger)
 
-        analysis_results = analyzer.analyze_all_sections(current_data, previous_data)
+        analysis_results = analyzer.analyze_all_sections(current_data, previous_data, week_config)
 
         # 显示分析结果摘要
         if 'traffic' in analysis_results:

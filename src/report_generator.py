@@ -91,6 +91,7 @@ class ReportGenerator:
 
         # 渲染模板
         html = template.render(
+            ai_summary=analysis.get('ai_summary', ''),
             total_visitors=self._format_number(total_visitors),
             total_registrations=self._format_number(total_registrations),
             conversion_rate=f"{conversion_rate:.2f}",
@@ -150,10 +151,11 @@ class ReportGenerator:
             }
         ]
 
-        # 渲染模板
+        # 渲染模板（使用analysis中的周标签）
         html = template.render(
-            previous_week_label='',  # activation 部分不使用周标签
-            current_week_label='',
+            ai_summary=analysis.get('ai_summary', ''),
+            previous_week_label=analysis.get('previous_week_label', '上上周'),
+            current_week_label=analysis.get('current_week_label', '上周'),
             funnel_steps=funnel_steps,
             # 使用 step4 作为总体转化率，替代不存在的 overall_* 字段
             overall_previous_rate=analysis.get('step4_previous_rate', 0),
@@ -185,6 +187,7 @@ class ReportGenerator:
 
         # 渲染模板
         html = template.render(
+            ai_summary=analysis.get('ai_summary', ''),
             wau=self._format_number(wau),
             wau_trend_class=self._get_trend_class(wau_wow),
             wau_change_str=self._format_change(wau_wow, '%') if 'wau_wow' in analysis else '→',
@@ -218,6 +221,7 @@ class ReportGenerator:
 
         # 渲染模板
         html = template.render(
+            ai_summary=analysis.get('ai_summary', ''),
             new_user_retention_rate=analysis.get('new_user_retention_rate', 0),
             new_user_retention_previous=analysis.get('new_user_retention_previous', 0),
             new_user_retention_current=analysis.get('new_user_retention_current', 0),

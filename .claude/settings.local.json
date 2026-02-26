@@ -16,7 +16,16 @@
       "Bash(git checkout:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(python -m pytest:*)"
+      "Bash(python -m pytest:*)",
+      "Bash(python:*)",
+      "Bash(echo:*)",
+      "Bash(export METABASE_API_KEY=\"mb_h5ddq58TgNTAZsV7e81myvAxMlMcqXWrx1y9TdqArl8=\":*)",
+      "mcp__web-search-prime__webSearchPrime",
+      "mcp__web-reader__webReader",
+      "Bash(if:*)",
+      "Bash(then)",
+      "Bash(else)",
+      "Bash(fi:*)"
     ]
   }
 }

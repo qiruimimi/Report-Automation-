@@ -1,5 +1,12 @@
 <h2>2.激活</h2>
 
+{% if ai_summary %}
+<div class="ai-summary-section" style="background: #f4f5f7; padding: 12px; border-left: 3px solid #0052cc; margin: 12px 0; border-radius: 3px;">
+    <h4 style="margin: 0 0 8px 0; color: #172b4d; font-size: 14px;">🤖 AI洞察</h4>
+    <p style="color: #475469; line-height: 1.6; margin: 0;">{{ ai_summary }}</p>
+</div>
+{% endif %}
+
 <h3>完整数据对比（{{ previous_week_label }} vs {{ current_week_label }}）</h3>
 <table>
     <thead>
